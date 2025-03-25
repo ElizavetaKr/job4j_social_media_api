@@ -1,3 +1,5 @@
+![Build Status](https://github.com/ElizavetaKr/job4j_social_media_api/actions/workflows/maven.yml/badge.svg)
+
 # "Social Media API"
 ***
 ## RESTful API для социальной медиа платформы. 
