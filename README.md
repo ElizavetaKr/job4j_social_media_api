@@ -9,7 +9,7 @@
 ***
 ## В данном проекте используются: 
 Java 17, Spring Boot 3.4.4, Checkstyle 9.0, 
-Spring Security, Liquibase
+Spring Security, Liquibase, Lombok 1.18.30
 ***
 ## Требования к окружению:
 Java 17
