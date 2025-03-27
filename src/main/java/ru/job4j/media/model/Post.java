@@ -15,9 +15,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private int id;
-
-    private String name;
     @EqualsAndHashCode.Include
+    private String name;
     private String description;
 
     @ManyToOne
