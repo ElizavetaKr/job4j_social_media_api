@@ -1,5 +1,6 @@
 package ru.job4j.media.model;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +30,5 @@ public class Post {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Temporal(TemporalType.DATE)
     private LocalDateTime created;
 }

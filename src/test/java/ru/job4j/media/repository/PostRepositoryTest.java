@@ -8,6 +8,7 @@ import ru.job4j.media.model.File;
 import ru.job4j.media.model.Post;
 import ru.job4j.media.model.User;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +55,7 @@ public class PostRepositoryTest {
         post.setName("postName");
         post.setFile(file);
         post.setUser(user);
+        post.setCreated(LocalDateTime.now());
         postRepository.save(post);
         Optional<Post> foundPost = postRepository.findById(post.getId());
         assertThat(foundPost).isPresent();
@@ -66,10 +68,12 @@ public class PostRepositoryTest {
         post1.setName("postName1");
         post1.setFile(file);
         post1.setUser(user);
+        post1.setCreated(LocalDateTime.now());
         Post post2 = new Post();
         post2.setName("postName2");
         post2.setFile(file);
         post2.setUser(user);
+        post2.setCreated(LocalDateTime.now());
         postRepository.save(post1);
         postRepository.save(post2);
         List<Post> posts = postRepository.findAll();
