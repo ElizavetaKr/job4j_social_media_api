@@ -3,7 +3,7 @@ package ru.job4j.media.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -30,5 +30,5 @@ public class Post {
     private User user;
 
     @Temporal(TemporalType.DATE)
-    private Date created;
+    private LocalDateTime created;
 }
