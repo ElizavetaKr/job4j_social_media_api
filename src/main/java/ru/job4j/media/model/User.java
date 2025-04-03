@@ -4,6 +4,9 @@ package ru.job4j.media.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -20,4 +23,13 @@ public class User {
     @EqualsAndHashCode.Include
     private String email;
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Friend> friends = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Subscriber> subscribers = new ArrayList<>();
 }
