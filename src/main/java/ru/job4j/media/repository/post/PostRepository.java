@@ -1,13 +1,13 @@
-package ru.job4j.media.repository;
+package ru.job4j.media.repository.post;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.job4j.media.model.Post;
-
-import java.util.List;
 
 @Repository
 public interface PostRepository extends ListCrudRepository<Post, Integer> {
@@ -33,7 +33,7 @@ public interface PostRepository extends ListCrudRepository<Post, Integer> {
 
     @Query("""
             select p from Post p where p.user.id in (
-            select s.id from Subscriber s where s.user.id = ?1)
+            select s.id from Subscriber s where s.requestUser.id = :userId)
             """)
-    List<Post> findPostsSubscribers(int userId);
+    Page<Post> findPostsSubscribers(@Param("userId") int userId, Pageable pageable);
 }

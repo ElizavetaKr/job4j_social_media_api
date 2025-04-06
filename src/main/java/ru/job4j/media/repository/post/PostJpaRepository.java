@@ -1,15 +1,13 @@
-package ru.job4j.media.repository;
+package ru.job4j.media.repository.post;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import ru.job4j.media.model.Post;
 
 import java.util.Date;
 import java.util.List;
 
-@Repository
 public interface PostJpaRepository extends JpaRepository<Post, Integer> {
 
     List<Post> findAll();

@@ -7,6 +7,9 @@ import org.springframework.test.context.ActiveProfiles;
 import ru.job4j.media.model.File;
 import ru.job4j.media.model.Post;
 import ru.job4j.media.model.User;
+import ru.job4j.media.repository.file.FileRepository;
+import ru.job4j.media.repository.post.PostRepository;
+import ru.job4j.media.repository.user.UserRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

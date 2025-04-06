@@ -17,10 +17,11 @@ public class Subscriber {
     @EqualsAndHashCode.Include
     private int id;
 
-    private boolean exist;
-    @EqualsAndHashCode.Include
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User requestUser;
 
+    @ManyToOne
+    @JoinColumn(name = "target_user_id")
+    private User targetUser;
 }

@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import ru.job4j.media.model.Subscriber;
 import ru.job4j.media.model.User;
+import ru.job4j.media.repository.subscriber.SubscriberRepository;
+import ru.job4j.media.repository.user.UserRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,7 +20,8 @@ public class SubscriberRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
-    private User user = new User();
+    private User requestUser = new User();
+    private User targetUser = new User();
 
     @AfterEach
     void setUp() {
@@ -32,20 +35,24 @@ public class SubscriberRepositoryTest {
 
     @BeforeAll
     void addUser() {
-        user.setName("userName");
-        user.setEmail("email@email.ru");
-        user.setPassword("password");
-        userRepository.save(user);
+        requestUser.setName("requestUserName");
+        requestUser.setEmail("email1@email.ru");
+        requestUser.setPassword("password");
+        userRepository.save(requestUser);
+        targetUser.setName("targetUserName");
+        targetUser.setEmail("email2@email.ru");
+        targetUser.setPassword("password");
+        userRepository.save(targetUser);
     }
 
     @Test
     public void whenSaveSubscriberThenFindById() {
         Subscriber subscriber = new Subscriber();
-        subscriber.setExist(true);
-        subscriber.setUser(user);
+        subscriber.setTargetUser(targetUser);
+        subscriber.setRequestUser(requestUser);
         subscriberRepository.save(subscriber);
         var foundSub = subscriberRepository.findById(subscriber.getId());
         assertThat(foundSub).isPresent();
-        assertThat(foundSub.get().getUser()).isEqualTo(user);
+        assertThat(foundSub.get()).isEqualTo(subscriber);
     }
 }

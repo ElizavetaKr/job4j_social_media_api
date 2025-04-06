@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import ru.job4j.media.model.File;
+import ru.job4j.media.repository.file.FileRepository;
 
 import java.util.List;
 import java.util.Optional;
