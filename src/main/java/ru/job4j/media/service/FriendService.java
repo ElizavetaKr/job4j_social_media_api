@@ -16,9 +16,9 @@ public class FriendService {
     private final FriendRepository friendRepository;
     private final SubscriberService subscriberService;
 
-    public void saveNewFriend(Friend friend, Subscriber subscriber) {
-        friendRepository.save(friend);
+    public Friend saveNewFriend(Friend friend, Subscriber subscriber) {
         subscriberService.save(subscriber);
+        return friendRepository.save(friend);
     }
 
     public void delete(int requestUserId, int targetUserId) {
