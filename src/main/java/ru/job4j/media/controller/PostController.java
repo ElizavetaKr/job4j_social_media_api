@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.job4j.media.model.Post;
 import ru.job4j.media.service.PostService;
 
@@ -15,18 +16,30 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<Post> save(@RequestBody Post post) {
-        return ResponseEntity.ok(postService.save(post));
+        postService.save(post);
+        var uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(post.getId())
+                .toUri();
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .location(uri)
+                .body(post);
     }
 
     @DeleteMapping("/{postId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable int postId) {
-        postService.delete(postId);
+    public ResponseEntity<Void> delete(@PathVariable int postId) {
+        if (postService.delete(postId)) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @PutMapping
-    @ResponseStatus(HttpStatus.OK)
-    public void update(@RequestBody Post post) {
-        ResponseEntity.ok(postService.update(post));
+    public ResponseEntity<Void> update(@RequestBody Post post) {
+        if (postService.update(post)) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }
