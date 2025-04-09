@@ -5,8 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import ru.job4j.media.dto.UserPostDto;
 import ru.job4j.media.model.Post;
 import ru.job4j.media.service.PostService;
+
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -41,5 +44,14 @@ public class PostController {
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/allPosts")
+    public ResponseEntity<List<UserPostDto>> getAllPostsUser(@RequestParam List<Integer> usersId) {
+        List<UserPostDto> result = postService.getAllPostsUser(usersId);
+        if (result.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(result);
     }
 }

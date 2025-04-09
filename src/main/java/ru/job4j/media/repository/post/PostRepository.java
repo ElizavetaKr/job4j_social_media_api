@@ -9,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.job4j.media.model.Post;
 
+import java.util.List;
+
 @Repository
 public interface PostRepository extends ListCrudRepository<Post, Integer> {
     @Modifying(clearAutomatically = true)
@@ -35,5 +37,5 @@ public interface PostRepository extends ListCrudRepository<Post, Integer> {
             select p from Post p where p.user.id in (
             select s.id from Subscriber s where s.requestUser.id = :userId)
             """)
-    Page<Post> findPostsSubscribers(@Param("userId") int userId, Pageable pageable);
+    List<Post> findPostsSubscribers(@Param("userId") int userId);
 }
