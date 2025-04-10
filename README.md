@@ -8,15 +8,16 @@
 
 ***
 ## В данном проекте используются: 
-Java 17, Spring Boot 3.4.4, Checkstyle 9.0, 
-Spring Security, Liquibase, Lombok 1.18.30
+Java 17, Spring Boot 3.4.2, Checkstyle 10.17.0, 
+Spring Security, Liquibase, Lombok 1.18.36,
+OpenAPI 2.8.4
 ***
 ## Требования к окружению:
 Java 17
 
 Maven 3.10
 
-PostgreSQL 16
+PostgreSQL 17
 ***
 ## Запуск проекта:
 1. Скачиваете проект из данного репозитория
