@@ -2,6 +2,7 @@ package ru.job4j.media.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -18,10 +19,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    @NotBlank(message = "Имя пользователя не может быть пустым")
     private String name;
     @EqualsAndHashCode.Include
+    @NotBlank(message = "email не может быть пустым")
     private String email;
+    @NotBlank(message = "Пароль не может быть пустым")
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
