@@ -38,9 +38,9 @@ public class PostService {
         return postRepository.findById(postId);
     }
 
-    public List<UserPostDto> getAllPostsUser(List<Integer> usersId) {
+    public List<UserPostDto> getAllPostsUser(List<Long> usersId) {
         List<UserPostDto> result = new ArrayList<>();
-        for (Integer i : usersId) {
+        for (Long i : usersId) {
             User user = userRepository.findById(i).orElseThrow(() -> new RuntimeException("Пользователь не найден"));
             user.setPosts(postRepository.findPostsSubscribers(i));
             result.add(userPostMapper.getUserPostDtoFromEntity(user));

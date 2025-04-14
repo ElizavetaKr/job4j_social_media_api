@@ -12,4 +12,6 @@
     <include file="scripts/006_ddl_alter_posts_table.sql" relativeToChangelogFile="true"/>
     <include file="scripts/007_ddl_alter_subscribers_table.sql" relativeToChangelogFile="true"/>
     <include file="scripts/008_ddl_alter_friends_table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/009_ddl_create_roles_table.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/010_dml_insert_roles_table.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

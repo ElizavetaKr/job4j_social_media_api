@@ -37,5 +37,5 @@ public interface PostRepository extends ListCrudRepository<Post, Integer> {
             select p from Post p where p.user.id in (
             select s.id from Subscriber s where s.requestUser.id = :userId)
             """)
-    List<Post> findPostsSubscribers(@Param("userId") int userId);
+    List<Post> findPostsSubscribers(@Param("userId") long userId);
 }

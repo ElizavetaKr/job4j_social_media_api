@@ -90,7 +90,7 @@ public class PostController {
             @ApiResponse(responseCode = "200", content = {@Content(schema = @Schema(implementation = UserPostDto.class), mediaType = "application/json")}),
             @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema())})})
     @GetMapping("/allPosts")
-    public ResponseEntity<List<UserPostDto>> getAllPostsUser(@RequestParam List<Integer> usersId) {
+    public ResponseEntity<List<UserPostDto>> getAllPostsUser(@RequestParam List<Long> usersId) {
         List<UserPostDto> result = postService.getAllPostsUser(usersId);
         if (result.isEmpty()) {
             return ResponseEntity.notFound().build();

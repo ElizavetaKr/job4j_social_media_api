@@ -16,11 +16,11 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Optional<User> findById(int userId) {
+    public Optional<User> findById(long userId) {
         return userRepository.findById(userId);
     }
 
-    public void delete(int userId) {
+    public void delete(long userId) {
         userRepository.deleteById(userId);
     }
 }
